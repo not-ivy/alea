@@ -1,7 +1,13 @@
-image: alpine/edge
+image: archlinux
 packages:
   - deno
 tasks:
-  - fmt: deno fmt --check
-  - lint: deno lint
-  - test: deno task test
+  - fmt: |
+      cd alea
+      deno fmt --check
+  - lint: |
+      cd alea
+      deno lint
+  - test: |
+      cd alea
+      deno task test
