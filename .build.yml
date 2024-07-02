@@ -1,0 +1,7 @@
+image: alpine/edge
+packages:
+  - deno
+tasks:
+  - fmt: deno fmt --check
+  - lint: deno lint
+  - test: deno task test
