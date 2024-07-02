@@ -1,6 +1,6 @@
 {
   "name": "@iv/alea",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "exports": "./mod.ts",
   "tasks": {
     "test": "rm -rf coverage && deno test --coverage mod.spec.ts && deno coverage --html --include=mod.ts",
