@@ -1,0 +1,9 @@
+{
+  "name": "@iv/alea",
+  "version": "0.0.1",
+  "tasks": {
+    "test": "rm -rf coverage && deno test --coverage mod.spec.ts && deno coverage --html --include=mod.ts",
+    "bench": "deno bench mod.bench.ts",
+    "publish": "deno publish"
+  }
+}
