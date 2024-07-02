@@ -28,16 +28,16 @@ export default class Alea {
   #c: number = 1;
   #mash: Mash;
 
-  random() {
+  random = (): number => {
     const t = 2091639 * this.#s0 + this.#c * 2.3283064365386963e-10;
     this.#s0 = this.#s1;
     this.#s1 = this.#s2;
     return this.#s2 = t - (this.#c = t | 0);
-  }
+  };
 
-  uint32 = () => this.random() * 0x100000000;
+  uint32 = (): number => this.random() * 0x100000000;
 
-  fract53 = () =>
+  fract53 = (): number =>
     this.random() + (this.random() * 0x200000 | 0) * 1.1102230246251565e-16;
 
   get seed(): string {
