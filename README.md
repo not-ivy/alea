@@ -28,7 +28,7 @@ const alea = new Alea({
   seed: "demo", // you can provide a seed here, if not provided, +new Date will be used as the seed.
 });
 
-alea.random(); // returns a random float from [0 to 1[.
+alea.random(); // returns a random float from [0, 1[.
 alea.uint32(); // returns an unsigned random integer in the range [0, 2^32[
 alea.fract53(); // returns a 53-bit fraction in [0, 1[
 
@@ -59,3 +59,10 @@ summary
    2.66x faster than alea-old
    8.98x faster than random
 ```
+
+## license
+
+the original code(in mod.old.ts) is licensed under
+MIT[(source)](https://web.archive.org/web/20120124013936/http://baagoe.org/en/wiki/Better_random_numbers_for_javascript#License).
+the derivative work(in mod.ts) is licensed under ISC, which is compatible with
+MIT.
