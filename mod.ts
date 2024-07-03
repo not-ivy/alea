@@ -1,3 +1,17 @@
+/**
+ * a stateful hash function.
+ * note: it is likely to produce different results on each run with the same input.
+ *
+ * to use:
+ * ```ts
+ * import { Mash } from "jsr:@iv/alea";
+ * const mash = new Mash();
+ *
+ * console.log(mash.mash("demo"));
+ * ```
+ *
+ * @see {@link https://web.archive.org/web/20120124013936/http://baagoe.org/en/wiki/Better_random_numbers_for_javascript#Mash}
+ */
 export class Mash {
   #n = 0xefc8249d;
   static readonly version = "Mash 0.9" as const;
@@ -7,7 +21,6 @@ export class Mash {
    *
    * @param {string} data - the string to be hashed
    * @return {number} the hashed result as a float
-   * @see {@link https://web.archive.org/web/20120124013936/http://baagoe.org/en/wiki/Better_random_numbers_for_javascript#Mash}
    */
   mash(data: string): number {
     for (let i = 0; i < data.length; i++) {
@@ -26,6 +39,19 @@ export class Mash {
 
 export type AleaOptions = Partial<{ seed: string | number }>;
 
+/**
+ * a pseudo random number generator.
+ *
+ * to use:
+ * ```ts
+ * import Alea from "jsr:@iv/alea";
+ * const alea = new Alea();
+ *
+ * console.log(alea.random());
+ * ```
+ *
+ * @see {@link https://web.archive.org/web/20120124013936/http://baagoe.org/en/wiki/Better_random_numbers_for_javascript#Alea}
+ */
 export default class Alea {
   static readonly version = "Alea 0.9" as const;
   #seed: string;
