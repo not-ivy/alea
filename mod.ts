@@ -1,26 +1,26 @@
 export class Mash {
-  n = 0xefc8249d;
-  static readonly version = "Mash 0.9";
+  #n = 0xefc8249d;
+  static readonly version = "Mash 0.9" as const;
 
   mash(data: string): number {
     for (let i = 0; i < data.length; i++) {
-      this.n += data.charCodeAt(i);
-      let h = 0.02519603282416938 * this.n;
-      this.n = h >>> 0;
-      h -= this.n;
-      h *= this.n;
-      this.n = h >>> 0;
-      h -= this.n;
-      this.n += h * 0x100000000;
+      this.#n += data.charCodeAt(i);
+      let h = 0.02519603282416938 * this.#n;
+      this.#n = h >>> 0;
+      h -= this.#n;
+      h *= this.#n;
+      this.#n = h >>> 0;
+      h -= this.#n;
+      this.#n += h * 0x100000000;
     }
-    return (this.n >>> 0) * 2.3283064365386963e-10;
+    return (this.#n >>> 0) * 2.3283064365386963e-10;
   }
 }
 
 export type AleaOptions = Partial<{ seed: string | number }>;
 
 export default class Alea {
-  static readonly version = "Alea 0.9";
+  static readonly version = "Alea 0.9" as const;
   #seed: string;
   #s0: number = 0;
   #s1: number = 0;
