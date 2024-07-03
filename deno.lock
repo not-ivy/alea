@@ -3,7 +3,8 @@
   "packages": {
     "specifiers": {
       "jsr:@std/assert@^0.226.0": "jsr:@std/assert@0.226.0",
-      "jsr:@std/internal@^1.0.0": "jsr:@std/internal@1.0.0"
+      "jsr:@std/internal@^1.0.0": "jsr:@std/internal@1.0.0",
+      "npm:@types/node": "npm:@types/node@18.16.19"
     },
     "jsr": {
       "@std/assert@0.226.0": {
@@ -15,7 +16,23 @@
       "@std/internal@1.0.0": {
         "integrity": "ac6a6dfebf838582c4b4f61a6907374e27e05bedb6ce276e0f1608fe84e7cd9a"
       }
+    },
+    "npm": {
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
+      }
     }
   },
-  "remote": {}
+  "redirects": {
+    "https://esm.sh/random": "https://esm.sh/random@4.1.0",
+    "https://esm.sh/xorshift": "https://esm.sh/xorshift@1.2.0"
+  },
+  "remote": {
+    "https://esm.sh/random@4.1.0": "a4d5115370fda33d3e2138361a7779e31a0c4951283900702eba72edd81b9d06",
+    "https://esm.sh/v135/random@4.1.0/denonext/random.mjs": "cebd81184b68f67c6b44cae26656ce55bb3362e07dc2a03a12536b545bfa7375",
+    "https://esm.sh/v135/seedrandom@3.0.5/denonext/seedrandom.mjs": "cf4069e842b0324889378cb4922d03f3d8ed42cfadd1410a6b7ea8515693058f",
+    "https://esm.sh/v135/xorshift@1.2.0/denonext/xorshift.mjs": "fb84521cf863d3d1a79a80d015f1db9c7c6e824fdbebae7a90898c51f3e69b4a",
+    "https://esm.sh/xorshift@1.2.0": "1e28e89d14e93fc3655f99ee69948699e9b08cb06ac8b159d03a295adb739f69"
+  }
 }
