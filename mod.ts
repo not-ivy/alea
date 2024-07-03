@@ -2,6 +2,13 @@ export class Mash {
   #n = 0xefc8249d;
   static readonly version = "Mash 0.9" as const;
 
+  /**
+   * a hash function that returns a float in the range [0, 1[ based on the input data string.
+   *
+   * @param {string} data - the string to be hashed
+   * @return {number} the hashed result as a float
+   * @see {@link https://web.archive.org/web/20120124013936/http://baagoe.org/en/wiki/Better_random_numbers_for_javascript#Mash}
+   */
   mash(data: string): number {
     for (let i = 0; i < data.length; i++) {
       this.#n += data.charCodeAt(i);
@@ -28,6 +35,11 @@ export default class Alea {
   #c: number = 1;
   #mash: Mash;
 
+  /**
+   * creates a random float.
+   *
+   * @returns a random float from [0, 1[
+   */
   random = (): number => {
     const t = 2091639 * this.#s0 + this.#c * 2.3283064365386963e-10;
     this.#s0 = this.#s1;
@@ -35,8 +47,18 @@ export default class Alea {
     return this.#s2 = t - (this.#c = t | 0);
   };
 
+  /**
+   * creates a random unsigned 32-bit integer.
+   *
+   * @returns an unsigned random integer in the range [0, 2^32[
+   */
   uint32 = (): number => this.random() * 0x100000000;
 
+  /**
+   * creates a random 53-bit fraction.
+   *
+   * @returns a 53-bit fraction in [0, 1[
+   */
   fract53 = (): number =>
     this.random() + (this.random() * 0x200000 | 0) * 1.1102230246251565e-16;
 
@@ -44,6 +66,11 @@ export default class Alea {
     return this.#seed;
   }
 
+  /**
+   * creates a new Alea instance with the given options.
+   *
+   * @param opts.seed - seed to use for the Alea instance. if not provided, `+new Date` will be used.
+   */
   constructor(opts?: AleaOptions) {
     this.#mash = new Mash();
     this.#s0 = this.#mash.mash(" ");
