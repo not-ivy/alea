@@ -74,6 +74,36 @@ export default class Alea {
   };
 
   /**
+   * performs box-muller on the the uniform random to get random values in a normal distribution
+   *
+   * @param mu mean
+   * @param sig standard deviation
+   * @returns a random number from the normal distribution
+   */
+  normal = (mu = 0, sig = 1): number => {
+    if (sig <= 0) throw new Error("invalid parameters");
+
+    return Math.sqrt(-2 * Math.log(this.random())) *
+        Math.cos(2 * Math.PI * this.random()) * sig + mu;
+  };
+
+  /**
+   * gets a random number from a triangular distribution
+   *
+   * @param a lower limit
+   * @param b upper limit
+   * @param c mode
+   * @returns a random number from the triangular distribution
+   */
+  triangular = (a: number, b: number, c: number) => {
+    if (!(a < b && a <= c && c <= b)) throw new Error("invalid parameters");
+    const u = this.random();
+    return (u <= (c - a) / (b - a))
+      ? a + Math.sqrt(u * (b - a) * (c - a))
+      : b - Math.sqrt((1 - u) * (b - a) * (b - c));
+  };
+
+  /**
    * creates a random unsigned 32-bit integer.
    *
    * @returns an unsigned random integer in the range [0, 2^32[
@@ -106,6 +136,7 @@ export default class Alea {
     this.#seed = opts?.seed !== undefined
       ? (typeof opts.seed === "number" ? opts.seed.toString() : opts.seed)
       : (+new Date()).toString();
+
     this.#s0 -= this.#mash.mash(this.#seed);
     if (this.#s0 < 0) this.#s0 += 1;
     this.#s1 -= this.#mash.mash(this.#seed);
