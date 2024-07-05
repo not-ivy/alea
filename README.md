@@ -31,6 +31,8 @@ const alea = new Alea({
 alea.random(); // returns a random float from [0, 1[.
 alea.uint32(); // returns an unsigned random integer in the range [0, 2^32[
 alea.fract53(); // returns a 53-bit fraction in [0, 1[
+alea.triangular(0, 1, 0); // returns a random number from a triangular distribution where a=0, b=1, and c=0
+alea.normal(); // if args are not provided, mu=0 and sigma=1. returns a random number from a normal distribution
 
 mash.mash("demo") // returns a float from [0 to 1[.
 (mash.mash("demo") * 0x100000000).toString(16); // a hex string representing the hash
