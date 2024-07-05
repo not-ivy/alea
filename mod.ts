@@ -95,7 +95,7 @@ export default class Alea {
    * @param c mode
    * @returns a random number from the triangular distribution
    */
-  triangular = (a: number, b: number, c: number) => {
+  triangular = (a: number, b: number, c: number): number => {
     if (!(a < b && a <= c && c <= b)) throw new Error("invalid parameters");
     const u = this.random();
     return (u <= (c - a) / (b - a))
